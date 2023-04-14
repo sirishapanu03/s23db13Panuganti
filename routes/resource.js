@@ -17,4 +17,5 @@ router.put('/cakes/:id', cake_controller.cake_update_put);
 router.get('/cakes/:id', cake_controller.cake_detail);
 // GET request for list of all cake items.
 router.get('/cakes', cake_controller.cake_list);
+router.get('/', cake_controller.cake_view_all_Page);
 module.exports = router;

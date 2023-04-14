@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   script.
-  - let results = [{ cake_flavour: "Vanilla", weight: "2lb", cake_cost: 20 },{ cake_flavour: "Chocolate", weight: "3lb", cake_cost: 30 },{ cake_flavour: "Oreo", weight: "4lb", cake_cost: 40 }]
+  - let results =results
   div(class='container-fluid')
     div(class='row')
       each i,index in results

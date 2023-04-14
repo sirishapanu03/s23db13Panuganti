@@ -1,9 +1,8 @@
 var express = require('express');
+const cake_controlers= require('../controllers/cakes');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('cakes', { title: 'Search results' });
-});
+router.get('/', cake_controlers.cake_view_all_Page);
 
 module.exports = router;
