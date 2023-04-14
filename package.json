@@ -1,5 +1,5 @@
 {
-  "name": "s23wb13panuganti",
+  "name": "s23db13panuganti",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "express": "^4.18.2",
     "http-errors": "^2.0.0",
     "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
   },
