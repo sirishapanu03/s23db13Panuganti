@@ -16,8 +16,8 @@ var usersRouter = require('./routes/users');
 var cakesRouter = require('./routes/cakes');
 var boardRouter = require('./routes/board');
 var selectorRouter = require('./routes/selector');
-var Cake = require("./models/cakes");
-var resourceRouter = require('./routes/resource')
+var Cake = require('./models/cakes');
+var resourceRouter = require('./routes/resource');
 
 
 var app = express();
@@ -62,8 +62,7 @@ app.use(function(err, req, res, next) {
 async function recreateDB(){
  // Delete everything
  await Cake.deleteMany();
- let cake1 = new
-Cake({cake_flavour:"Vanilla", weight:'2lb', cake_cost:20});
+ let cake1 = new Cake({cake_flavour:"Vanilla", weight:'2lb', cake_cost:20});
  cake1.save().then(doc=>{
   console.log("First object saved")}
   ).catch(err=>{
