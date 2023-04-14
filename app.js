@@ -70,7 +70,7 @@ async function recreateDB(){
   });
 
  let cake2 = new
- Cake({cake_flavour:"Vanilla", weight:'2lb', cake_cost:20});
+ Cake({cake_flavour:"Chocolate", weight:'1lb', cake_cost:20});
   cake2.save().then(doc=>{
     console.log("Second object saved")}
     ).catch(err=>{
@@ -78,7 +78,7 @@ async function recreateDB(){
     });
 
   let cake3 = new
-  Cake({cake_flavour:"Vanilla", weight:'2lb', cake_cost:20});
+  Cake({cake_flavour:"Oreo", weight:'3lb', cake_cost:20});
    cake3.save().then(doc=>{
     console.log("Third object saved")}
     ).catch(err=>{
