@@ -42,9 +42,17 @@ exports.cake_create_post = async function(req, res) {
     }
    };
 // Handle Cake delete form on DELETE.
-exports.cake_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: Cake delete DELETE ' + req.params.id);
-};
+exports.cake_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Cake.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 // Handle Cake update form on PUT.
 exports.cake_update_put = async function(req, res) {
  console.log(`update on id ${req.params.id} with body
@@ -79,3 +87,18 @@ exports.cake_view_all_Page = async function(req, res) {
     }
    };
 
+
+
+// Handle a show one view with id specified by query
+exports.cake_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Cake.findById( req.query.id)
+    res.render('cakedetail',
+   { title: 'Cake Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
