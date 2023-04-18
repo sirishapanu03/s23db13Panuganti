@@ -23,5 +23,7 @@ router.get('/', cake_controller.cake_view_all_Page);
 
 /* GET detail cake page */
 router.get('/cakes/detail', detail_controller.cake_view_one_Page);
+/* GET create cake page */
+router.get('/create', detail_controller.cake_create_Page);
 
 module.exports = router;
