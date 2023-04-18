@@ -1,0 +1,49 @@
+extends layout
+block content
+ h1= title
+
+ if (toShow == null)
+  h2 No instance to delete
+ else
+ - let cake_id = toShow._id
+ - let cake_flavour = toShow.cake_flavour
+ - let weight = toShow.weight
+ - let cake_cost = toShow.cake_cost
+ - let actionid = "/resource/cakes/" + cakeid
+ script let actionid = "#{actionid}"
+ div
+ div.row
+ div(class='cakeAttr mr-3') Cake ID is:
+ div #{cake_id}
+ div.row
+ div(class='cakeAttr mr-3') Cake Type is:
+ div #{cake_flavour}
+ div.row
+ div(class='cakeAttr mr-3') Cake Size is:
+ div #{weight}
+ div.row
+ div(class='cakeAttr mr-3') Cake Cost is:
+ div #{cake_cost}
+ button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+ button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+ script.
+  function cancel() {
+    window.location.href='/cakes'
+  }
+
+
+ script.
+  function deleteOnid() {
+   console.log("starting delete")
+   fetch(actionid, {
+    method: 'DELETE'  
+   }).then((resp) => {
+    return resp.json(); // or resp.text() or whatever the server sends
+   }).then((body) => {
+    alert("Delete succeded")
+    window.location.href='/cakes'
+   }).catch((error) => {
+    alert("Delete failed " + error )
+   });
+  }
