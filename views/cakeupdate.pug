@@ -1,37 +1,38 @@
 extends layout
-block content
- h1= title
- - let cake_id = toShow._id
- - let cake_flavour = toShow.cake_flavour
- - let weight = toShow.weight
- - let cake_cost = toShow.cake_cost
- div.row(class='mb-2')
-  div.mr-1 ID is
-  div #{cake_id}
- -let actionid = "/resource/cakes/" + cake_id
- form(id='CakeForm', action= actionid, method="PUT")
- div.form-group
-   label.cakeAttr(for='cake_flavour') Cake flavour
-   input#cake_flavour(type='text', name='cake_flavour', value= cake_flavour )
- div.form-group
-   label.cakeAttr(for='weight') Cake weight
-   input#weight(type='text', name='weight', value= weight )
- div.form-group
-   label.cakeAttr(for='cake_cost') Cake cost
-   input#cake_cost(type='number', name='cake_cost', value= cake_cost )
- input(type="submit")
 
- script.
-   document.forms['CakeForm'].addEventListener('submit', (event) => {
-    event.preventDefault();
-    fetch(event.target.action, {
-     method: 'PUT',
-     body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-    }).then((resp) => {
-     return resp.json(); // or resp.text() or whatever the server sends
-    }).then((body) => {
-     alert("Update succeded")
-    }).catch((error) => {
-     alert("Update failed " + error )
+block content
+  h1= title
+  - let cake_id = toShow._id
+  - let cake_flavour = toShow.cake_flavour
+  - let weight = toShow.weight
+  - let cake_cost = toShow.cake_cost
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{cake_id}
+  - let actionid = "/resource/cakes/" + cake_id
+  form(id='CakeForm', action= actionid, method="PUT")
+    div.form-group
+      label.cakeAttr(for='cake_flavour') Cake flavour
+      input#cake_flavour(type='text', name='cake_flavour', value= cake_flavour )
+    div.form-group
+      label.cakeAttr(for='weight') Cake weight
+      input#weight(type='text', name='weight', value= weight )
+    div.form-group
+      label.cakeAttr(for='cake_cost') Cake cost
+      input#cake_cost(type='number', name='cake_cost', value= cake_cost )
+    input(type="submit")
+
+  script.
+    document.forms['CakeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeeded")
+      }).catch((error) => {
+        alert("Update failed " + error )
+      });
     });
-   });
