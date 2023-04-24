@@ -3,13 +3,11 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 const accountSchema = new Schema({
  username: String,
- password: {type: String, required: true}
+ password: String
 });
 accountSchema.plugin(passportLocalMongoose);
 
 accountSchema.methods.validPassword = function(pwd) {
-    console.log(pwd)
-    console.log(this.password)
     return ( this.password === pwd );
    
   };
