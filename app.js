@@ -108,24 +108,23 @@ if (reseed) { recreateDB();}
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    Account.findOne({ username: username }, function (err, user) {
-      if (err) {
-        // Return the error to the callback function
+    Account.findOne({ username: username })
+      .then(function (user) {
+        if (!user) {
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+      })
+      .catch(function (err) {
         return done(err);
-      }
-      if (!user) {
-        // Return an error message to the callback function
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        // Return an error message to the callback function
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      // Return the user object to the callback function
-      return done(null, user);
-    });
-  }
-));
+      });
+  }))
+
+ 
+  
 
 
 
