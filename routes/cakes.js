@@ -14,7 +14,7 @@ router.get('/detail', detail_controller.cake_view_one_Page);
 router.get('/create', detail_controller.cake_create_Page);
 
 // A little function to check if we have an authorized user and continue on
-or
+//or
 // redirect to login.
 const secured = (req, res, next) => {
  if (req.user){
@@ -23,7 +23,7 @@ const secured = (req, res, next) => {
  req.session.returnTo = req.originalUrl;
  res.redirect("/login");
  }
- 
+
 /* GET  update cake page */
 router.get('/update',secured, detail_controller.cake_update_Page);
 
