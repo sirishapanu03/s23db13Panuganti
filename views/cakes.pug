@@ -12,7 +12,7 @@ block content
           - let destination = `dispatch(\"/cakes/update?id=${i._id}\")`
           - let detailPage = `dispatch(\"/cakes/detail?id=${i._id}\")`
           - let deletePage = `dispatch(\"/cakes/delete?id=${i._id}\")`
-             div(class= "col-sm-2" onclick =`buy(${index})`) Cake Flavour: #{i.cake_flavour}, <br> Cake weight: #{i.weight}, <br> Cake Cost :#{i.cake_cost}<br>
+             div(class= "col-sm-2" onclick =`buy(${index})`) Cake Flavour: #{i.cake_flavour} <br> Cake weight: #{i.weight} <br> Cake Cost :#{i.cake_cost}<br>
              button.btn( class="btn-primary ml-1", onclick= destination) Update <br>
              button.btn( class="btn-secondary ml-1", onclick= detailPage) Details <br>
              button.btn( class="btn-warning ml-1", onclick= deletePage) Delete 
